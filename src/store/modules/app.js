@@ -1,5 +1,7 @@
 import Cookies from 'js-cookie'
 
+// 项目复杂度不高，不要modules
+
 const app = {
   state: {
     sidebar: {

@@ -35,7 +35,6 @@
 
 <script>
 import path from 'path'
-import { isExternal } from '@/utils'
 import Item from './Item'
 import AppLink from './Link'
 
@@ -94,7 +93,7 @@ export default {
       return path.resolve(this.basePath, routePath)
     },
     isExternalLink(routePath) {
-      return isExternal(routePath)
+      return true
     }
   }
 }

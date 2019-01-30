@@ -1,3 +1,11 @@
+/*
+ * @Author: Jack
+ * @Date: 2019-01-30 10:40:01
+ * @LastEditors: Jack
+ * @LastEditTime: 2019-01-30 12:39:06
+ * @Description: Check Node和Npm的版本
+ */
+
 'use strict'
 const chalk = require('chalk')
 const semver = require('semver')

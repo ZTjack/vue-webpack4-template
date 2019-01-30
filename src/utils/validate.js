@@ -1,5 +1,9 @@
-/**
- * Created by jiachenpan on 16/11/18.
+/*
+ * @Author: Jack
+ * @Date: 2019-01-30 10:40:01
+ * @LastEditors: Jack
+ * @LastEditTime: 2019-01-30 12:33:46
+ * @Description: 方法函数
  */
 
 export function isvalidUsername(str) {

@@ -1,13 +1,11 @@
 
 <template>
-  <!-- eslint-disable vue/require-component-is-->
   <component v-bind="linkProps(to)">
     <slot/>
   </component>
 </template>
 
 <script>
-import { isExternal } from '@/utils'
 
 export default {
   props: {
@@ -18,7 +16,7 @@ export default {
   },
   methods: {
     isExternalLink(routePath) {
-      return isExternal(routePath)
+      return true
     },
     linkProps(url) {
       if (this.isExternalLink(url)) {

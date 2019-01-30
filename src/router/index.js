@@ -1,3 +1,13 @@
+/*
+ * @Author: Jack
+ * @Date: 2019-01-30 10:40:01
+ * @LastEditors: Jack
+ * @LastEditTime: 2019-01-30 15:39:15
+ * @Description:
+ */
+
+// TODO: will be replaced with my own project
+
 import Vue from 'vue'
 import Router from 'vue-router'
 
