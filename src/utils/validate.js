@@ -2,14 +2,9 @@
  * @Author: Jack
  * @Date: 2019-01-30 10:40:01
  * @LastEditors: Jack
- * @LastEditTime: 2019-01-30 12:33:46
+ * @LastEditTime: 2019-01-31 15:28:13
  * @Description: 方法函数
  */
-
-export function isvalidUsername(str) {
-  const valid_map = ['admin', 'editor']
-  return valid_map.indexOf(str.trim()) >= 0
-}
 
 /* 合法uri*/
 export function validateURL(textval) {
