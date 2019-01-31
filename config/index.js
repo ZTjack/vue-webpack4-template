@@ -39,12 +39,14 @@ module.exports = {
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
-    cssSourceMap: false
+    cssSourceMap: false,
+    htmlTemplate: './template/dev.html'
   },
 
   build: {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
+    htmlTemplate: './template/prod.html',
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
@@ -81,6 +83,6 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report || false,
 
     // `npm run build:prod --generate_report`
-    generateAnalyzerReport: process.env.npm_config_generate_report || false
+    generateAnalyzerReport: process.env.npm_config_generate_report || false,
   }
 }

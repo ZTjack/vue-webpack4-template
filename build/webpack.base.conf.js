@@ -26,15 +26,19 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
+    // build的输出文件夹
     path: config.build.assetsRoot,
-    filename: '[name].js',
+    filename: '[name].js?[hash]',
+    chunkFilename: '[name].js?[hash]',
+    // publickPath可以理解成为当一个个js build好之后，内部调用的时候会加上一个前缀
+    // 比如说，我们的项目的js都放在cdn上面去了，这里就可以设置为 https://cdn.1tokentrade.cn/otimg-sh/web-deploy/
     publicPath:
       process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
         : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue'],
     alias: {
       '@': resolve('src')
     }
@@ -53,16 +57,9 @@ module.exports = {
         include: [
           resolve('src'),
           resolve('test'),
+          // TODO: 本身这个webpack-dev-server不规范（用了const）导致的
           resolve('node_modules/webpack-dev-server/client')
         ]
-      },
-      {
-        test: /\.svg$/,
-        loader: 'svg-sprite-loader',
-        include: [resolve('src/icons')],
-        options: {
-          symbolId: 'icon-[name]'
-        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

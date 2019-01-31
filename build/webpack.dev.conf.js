@@ -19,6 +19,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   module: {
+    // 这里塞了好多loader
     rules: utils.styleLoaders({
       sourceMap: config.dev.cssSourceMap,
       usePostCSS: true
@@ -48,16 +49,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
+      // 全局搜一下这个文件里面的BASE_API就知道怎么用的了
       'process.env': require('../config/dev.env')
     }),
     new webpack.HotModuleReplacementPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
+      template: config.dev.htmlTemplate,
       inject: true,
-      favicon: resolve('favicon.ico'),
-      title: 'vue-admin-template'
+      title: 'Dev Environment',
+      // icon配置
+      favicon: resolve('favicon.ico')
     })
   ]
 })

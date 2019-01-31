@@ -6,6 +6,7 @@ const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require("clean-webpack-plugin") 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -34,14 +35,17 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash:8].js'),
-    chunkFilename: utils.assetsPath('js/[name].[chunkhash:8].js')
+    filename: utils.assetsPath('js/[name].js?[chunkhash:8]'),
+    chunkFilename: utils.assetsPath('js/[name].js?[chunkhash:8]')
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    // 定义process层级的常量
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    // 清理dist文件夹
+    new CleanWebpackPlugin(["dist"]),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[contenthash:8].css'),
@@ -51,11 +55,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.build.index,
-      template: 'index.html',
+      template: config.build.htmlTemplate,
       inject: true,
       favicon: resolve('favicon.ico'),
-      title: 'vue-admin-template',
+      title: 'Prod Environment',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -67,6 +70,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       // in certain cases, and in webpack 4, chunk order in HTML doesn't
       // matter anyway
     }),
+    // TODO: ?
     new ScriptExtHtmlWebpackPlugin({
       //`runtime` must same as runtimeChunk name. default is `runtime`
       inline: /runtime\..*\.js$/
@@ -91,6 +95,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // copy custom static assets
+    // 关于static的这个的理解还不够，没有遇到过很好的应用场景，感觉丢在assets也行，少一个解析？
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
@@ -109,6 +114,7 @@ const webpackConfig = merge(baseWebpackConfig, {
           priority: 10,
           chunks: 'initial' // 只打包初始时依赖的第三方
         },
+        // DEMO, 留着
         elementUI: {
           name: 'chunk-elementUI', // 单独将 elementUI 拆包
           priority: 20, // 权重要大于 libs 和 app 不然会被打包进 libs 或者 app
