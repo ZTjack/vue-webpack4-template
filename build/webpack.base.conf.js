@@ -56,9 +56,9 @@ module.exports = {
         loader: 'babel-loader',
         include: [
           resolve('src'),
-          resolve('test'),
+          // resolve('test'),
           // TODO: 本身这个webpack-dev-server不规范（用了const）导致的
-          resolve('node_modules/webpack-dev-server/client')
+          // resolve('node_modules/webpack-dev-server/client')
         ]
       },
       {
