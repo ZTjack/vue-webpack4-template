@@ -1,3 +1,10 @@
+/*
+ * @Author: Jack
+ * @Date: 2019-06-14 17:56:18
+ * @LastEditors: Jack
+ * @LastEditTime: 2019-08-25 16:36:28
+ * @Description: 
+ */
 'use strict'
 // Template version: 1.2.6
 // see http://vuejs-templates.github.io/webpack for documentation.
@@ -12,7 +19,7 @@ module.exports = {
     proxyTable: {
       // example
       "/api": {
-        target: "https://1token.trade/api",
+        target: "https://cdn.1tokentrade.cn/api",
         pathRewrite: {
           '^/api': ''
         },
