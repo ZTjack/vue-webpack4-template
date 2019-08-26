@@ -2,10 +2,11 @@
  * @Author: Jack
  * @Date: 2019-01-31 15:16:47
  * @LastEditors: Jack
- * @LastEditTime: 2019-08-25 15:52:40
+ * @LastEditTime: 2019-08-26 12:07:01
  * @Description: 最基本的css，同时可以把首页需要载入的样式，丢到这个里面，比如说，navbar的样式这些
  */
 
+ @import "_support.scss";
 
  html {
   box-sizing: border-box;
